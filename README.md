@@ -1,6 +1,6 @@
 # P2P - Milestone 1 backend
 
-Backend for Milestone 1 project
+Backend for Milestone 2 project
 
 ## Table of Contents
 - [Install](#install)
