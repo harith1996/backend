@@ -67,7 +67,8 @@ if (!process.env.SIMULATION) {
  * @returns {Humidity} - a JSON with Humidity measurements
  */
 const getHumidityMeasurements = (req, res) => {
-    return res.json(db.getHumidityMeasurements());
+    limit = (req.query.latest != undefined) ? 1 : 0;
+    return res.json(db.getHumidityMeasurements(limit));
 };
 
 /**
@@ -76,7 +77,8 @@ const getHumidityMeasurements = (req, res) => {
  * @returns {Temperature} - a JSON with Temperature measurements
  */
 const getTemperatureMeasurements = (req, res) => {
-    return res.json(db.getTemperatureMeasurements());
+    limit = (req.query.latest != undefined) ? 1 : 0;
+    return res.json(db.getTemperatureMeasurements(limit));
 };
 
 module.exports = {

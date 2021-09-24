@@ -43,16 +43,25 @@ const init = (wss) => {
 
 //getters for each table
 
-const getHumidityMeasurements = () => {
-    return db.prepare("SELECT * FROM humidity").all();
+const getHumidityMeasurements = (limit = 0, orderasc = false) => {
+    var query_str = 'SELECT * FROM humidity'
+    query_str += ` ORDER BY time ${orderasc ? 'asc' : 'desc'}`
+    query_str += (limit > 0) ? ` LIMIT ${limit}` : ''
+    return db.prepare(query_str).all();
 };
 
-const getTemperatureMeasurements = () => {
-    return db.prepare("SELECT * FROM temperature").all();
+const getTemperatureMeasurements = (limit = 0, orderasc = false) => {
+    var query_str = 'SELECT * FROM temperature'
+    query_str += ` ORDER BY time ${orderasc ? 'asc' : 'desc'}`
+    query_str += (limit > 0) ? ` LIMIT ${limit}` : ''
+    return db.prepare(query_str).all();
 };
 
-const getDistanceMeasurements = () => {
-    return db.prepare("SELECT * FROM distance").all();
+const getDistanceMeasurements = (limit = 0, orderasc = false) => {
+    var query_str = 'SELECT * FROM distance'
+    query_str += ` ORDER BY time ${orderasc ? 'asc' : 'desc'}`
+    query_str += (limit > 0) ? ` LIMIT ${limit}` : ''
+    return db.prepare(query_str).all();
 };
 
 /**

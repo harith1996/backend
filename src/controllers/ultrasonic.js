@@ -53,7 +53,8 @@ setInterval(
 );
 
 getDistanceMeasurements = (req, res) => {
-    return res.json(db.getDistanceMeasurements());
+    var limit = (req.query.latest != undefined) ? 1 : 0;
+    return res.json(db.getDistanceMeasurements(limit));
 };
 
 module.exports = {
