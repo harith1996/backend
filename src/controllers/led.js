@@ -1,18 +1,4 @@
-require("dotenv").config();
-
-/**
- * @global
- * @typedef {Object} LEDState
- * @property {Boolean} state - 0 if LED is off, else 1
- */
-
-let db, gpio, led, ledState;
-
-db = require("../db");
-if (!process.env.SIMULATION) {
-    gpio = require("pigpio").Gpio;
-    led = new gpio(process.env.GPIO_LED, { mode: gpio.OUTPUT });
-}
+const db = require('../db')
 
 /**
  * @param {Request} req
@@ -20,10 +6,8 @@ if (!process.env.SIMULATION) {
  * @returns {LEDState} - JSON with LED State
  */
 const getStateLED = (req, res) => {
-    if (!process.env.SIMULATION) {
-        ledState = led.digitalRead();
-    }
-    return res.json({ state: ledState });
+    index = Number(req.params.index);
+    return res.json(db.getStateLED(index, 1));
 };
 
 /**
@@ -32,21 +16,19 @@ const getStateLED = (req, res) => {
  * @param {Response} res
  */
 const setStateLED = (req, res) => {
-    ledState = Number(req.params.state);
+    index = Number(req.params.index);
+    state = Number(req.params.state);
 
-    if (ledState !== 0 && ledState !== 1) {
+    if (state !== 0 && state !== 1) {
         return res.sendStatus(400);
     }
 
-    if (!process.env.SIMULATION) {
-        led.digitalWrite(ledState);
-    } else {
-        console.log("LED has changed to " + ledState);
-    }
+    console.log(`ℹ︎  Saving and publishing LED (${index}) state (${state})!`);
 
     db.changeLEDStatus({
         time: new Date().getTime(),
-        status: ledState,
+        id: index,
+        state: state,
     });
 
     return res.sendStatus(200);

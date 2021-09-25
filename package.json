@@ -4,9 +4,8 @@
   "description": "Connecting sensors to the RPi",
   "main": "index.js",
   "scripts": {
-    "start": "sudo node src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "sim": "SIMULATION=true node src/index.js"
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Harith Rathish and Sam Martin Vargas Giagnocavo",
   "license": "MIT",
@@ -15,8 +14,8 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "mqtt": "^4.2.8",
     "pigpio": "^3.3.1",
-    "pigpio-dht": "^1.1.1",
-    "ws": "^8.2.2"
+    "pigpio-dht": "^1.1.1"
   }
 }
