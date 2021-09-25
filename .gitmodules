@@ -1,0 +1,3 @@
+[submodule "frontend"]
+	path = frontend
+	url = git@gitlab.au.dk:iot-foxtrot/milestone-2/frontend.git
