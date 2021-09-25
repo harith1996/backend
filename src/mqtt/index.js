@@ -24,7 +24,8 @@ const sendJSON2Broker = (topic, msg) => {
 const subscribe = (topicarr, cbarr) => {
     mqttconn.subscribe(topicarr, undefined, (err, granted) => {
         if (err) {
-            console.error("⛔️  could not subscribe to topics :(");
+            console.error("ⅹ Could not subscribe to topics :(");
+            process.exit(1);
         } else {
             console.log("✔ Successfully connected to topics :D");
         }

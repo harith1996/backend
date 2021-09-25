@@ -8,7 +8,7 @@ const server = http.createServer(app)
 const mqttconn = require('./mqtt');
 
 if (process.env.SIMULATION) {
-    console.log("ℹ︎  Backend running in simulation mode")
+    console.log("ℹ︎ Backend running in simulation mode")
 }
 
 mqttconn.init(process.env.MQTT_BROKER, process.env.MQTT_PORT)
