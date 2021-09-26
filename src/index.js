@@ -16,7 +16,9 @@ const mqttconn = require('./mqtt');
 
 mqttconn.init(
     process.env.MQTT_BROKER,
-    process.env.MQTT_PORT
+    process.env.MQTT_PORT,
+    process.env.MQTT_USER,
+    process.env.MQTT_PWD,
 )
 
 /*  
