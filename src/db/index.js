@@ -1,5 +1,5 @@
 const Database = require("better-sqlite3");
-const db = new Database("data.db");
+const db = new Database("data/sqlite.db");
 
 let mqttconn
 
