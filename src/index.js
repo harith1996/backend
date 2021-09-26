@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const http = require('http')
 const httpProxy = require('http-proxy')
 const express = require('express')
