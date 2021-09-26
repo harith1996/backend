@@ -75,7 +75,7 @@ const getDistanceMeasurements = (limit = 0, orderasc = false) => {
  */
 const insertHumidityMeasurements = (data) => {
     data = JSON.parse(data.toString())
-    console.log(`ℹ︎ '#humidity' has received a new value (${data.humidity})`)
+    console.log(`☔︎ '#humidity' has received a new value (${data.humidity})`)
     db.prepare("INSERT INTO humidity VALUES (@time, @humidity)").run(data);
 };
 
@@ -85,7 +85,7 @@ const insertHumidityMeasurements = (data) => {
  */
 const insertTemperatureMeasurements = (data) => {
     data = JSON.parse(data.toString())
-    console.log(`ℹ︎ '#temperature' has received a new value (${data.temperature})`)
+    console.log(`☕︎ '#temperature' has received a new value (${data.temperature})`)
     db.prepare("INSERT INTO temperature VALUES (@time, @temperature)").run(
         data
     );
@@ -97,7 +97,7 @@ const insertTemperatureMeasurements = (data) => {
  */
 const insertDistanceMeasurements = (data) => {
     data = JSON.parse(data.toString())
-    console.log(`ℹ︎ '#distance' has received a new value (${data.distance})`)
+    console.log(`﹆ '#distance' has received a new value (${data.distance})`)
     db.prepare("INSERT INTO distance VALUES (@time, @distance)").run(data);
 };
 

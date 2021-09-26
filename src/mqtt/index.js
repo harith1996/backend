@@ -8,7 +8,7 @@ let mqttconn
  * @returns a WebSocket server running on the same path as 'server'
  */
 const init = (host, port) => {
-    mqttconn = mqtt.connect(host, {port: port});
+    mqttconn = mqtt.connect('mqtt://' + host, {port: port});
 };
 
 /**

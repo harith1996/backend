@@ -23,7 +23,9 @@ const setStateLED = (req, res) => {
         return res.sendStatus(400);
     }
 
-    console.log(`ℹ︎  Saving and publishing LED (${index}) state (${state})!`);
+    console.log('- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -')
+    console.log(`☀️ Saving and publishing to '#led' {id: ${index}, state: ${state}}`);
+    console.log('- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -')
 
     db.changeLEDStatus({
         time: new Date().getTime(),
