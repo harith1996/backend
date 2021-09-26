@@ -1,2 +1,12 @@
 node_modules
 data.db
+frontend/src
+frontend/.gitignore
+frontend/angular.json
+frontend/karma.conf.js
+frontend/package.json
+frontend/package-lock.json
+frontend/README.md
+frontend/tsconfig.app.json
+frontend/tsconfig.json
+frontend/tsconfig.spec.json
