@@ -41,8 +41,9 @@ const init = (mqtt) => {
     )"
     ).run();
     
-    mqttconn.subscribe(['humidity', 'temperature', 'distance'],
-        [insertHumidityMeasurements, insertTemperatureMeasurements, insertDistanceMeasurements])
+    mqttconn.subscribe(['humidity', 'temperature', 'distance', 'led'],
+        [insertHumidityMeasurements, insertTemperatureMeasurements,
+            insertDistanceMeasurements, insertLEDChange])
 };
 
 
@@ -112,9 +113,10 @@ const getStateLED = (index, limit = 0, orderasc = false) => {
  * Changes LED status, inserts the new LED status change into DB and broadcasts the current LED Status to all WebSocket clients
  * @param {*} data
  */
-const changeLEDStatus = (data) => {
+const insertLEDChange = (data) => {
+    data = JSON.parse(data.toString())
+    console.log(`☀️ '#led' has received a new value {id: ${data.id}, state: ${data.state}}`);
     db.prepare("INSERT INTO led VALUES (@time, @id, @state)").run(data);
-    mqttconn.sendJSON2Broker("led", data)
 };
 
 module.exports = {
@@ -126,5 +128,5 @@ module.exports = {
     getDistanceMeasurements,
     insertDistanceMeasurements,
     getStateLED,
-    changeLEDStatus,
+    insertLEDChange,
 };

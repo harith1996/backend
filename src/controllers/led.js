@@ -1,4 +1,5 @@
 const db = require('../db')
+const mqttconn = require('../mqtt')
 
 /**
  * @param {Request} req
@@ -23,15 +24,11 @@ const setStateLED = (req, res) => {
         return res.sendStatus(400);
     }
 
-    console.log('- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -')
-    console.log(`☀️ Saving and publishing to '#led' {id: ${index}, state: ${state}}`);
-    console.log('- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -')
-
-    db.changeLEDStatus({
+    mqttconn.sendJSON2Broker("trigger-led", {
         time: new Date().getTime(),
         id: index,
         state: state,
-    });
+    })
 
     return res.sendStatus(200);
 };
