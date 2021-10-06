@@ -1,4 +1,4 @@
-# P2P - Milestone 1 backend
+# P2P - Milestone 2 backend
 
 Backend for Milestone 2 project
 
