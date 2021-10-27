@@ -26,6 +26,12 @@ const sendJSON2Broker = (topic, msg) => {
     mqttconn.publish(topic, payload);
 };
 
+/**
+ * Subscribes to all topics in topicarr. Upon receving any new message, the corresponding 
+ * callback method from cbarr is called for each topic.
+ * @param {Array<String>} topicarr - array of topic names
+ * @param {Array<Function>} cbarr - array of callback methods for each topic
+ */
 const subscribe = (topicarr, cbarr) => {
     mqttconn.subscribe(topicarr, undefined, (err, granted) => {
         if (err) {

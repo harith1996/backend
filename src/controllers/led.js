@@ -12,8 +12,9 @@ const getStateLED = (req, res) => {
 };
 
 /**
- *
- * @param {Request} req
+ * Sets state of a LED given in req.params.index
+ * @param {Request} req - should have parameters 'index' for LED no. 
+ *                        and 'state' for LED state
  * @param {Response} res
  */
 const setStateLED = (req, res) => {

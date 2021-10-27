@@ -14,6 +14,7 @@ const mqttProxy = httpProxy.createProxyServer({
 const server = http.createServer(app)
 const mqttconn = require('./mqtt');
 
+//initialize MQTT connection
 mqttconn.init(
     process.env.MQTT_BROKER,
     process.env.MQTT_PORT,
@@ -22,7 +23,7 @@ mqttconn.init(
 )
 
 /*  
-    WebSocket server is sent to DB handler, 
+    MQTT server is sent to DB handler, 
     in order to send broadcasts as and when DB changes occur
 */
 db.init(mqttconn);
